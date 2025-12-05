@@ -630,6 +630,6 @@ process.on('SIGINT', () => {
   process.exit();
 });
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${port}`);
 });
