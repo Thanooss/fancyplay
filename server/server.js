@@ -8,11 +8,11 @@ const PORT= process.env.PORT|| 3001;
 const bodyParser = require('body-parser');
 const session = require('express-session');
 //const { toBePartiallyChecked } = require('@testing-library/jest-dom/matchers');
-app.use(session({
-  secret: '69',
-  resave: false,
-  saveUninitialized: false,
-}));
+// app.use(session({
+//   secret: '69',
+//   resave: false,
+//   saveUninitialized: false,
+// }));
 
 // Configure MySQL connection
 const connection = mysql.createConnection({
@@ -46,7 +46,7 @@ app.get('/user/matches', (req, res) => {
   });
 });
 app.post('/register', (req, res) => {
-  console.log("registering new user...);
+  console.log("registering new user...");
   console.log(req.body)
   const { fullname, mobile, email, password, username } = req.body;
   const encryptedpassword = bcrypt.hashSync(password, 6);
