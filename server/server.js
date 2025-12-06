@@ -31,6 +31,7 @@ app.use(bodyParser.json());
 
 // Define API endpoint to fetch matches
 app.get('/user/matches', (req, res) => {
+  console.log("fetching matches...");
   const query = 'SELECT (select team_name from teams where matches.teamA_id=teams.team_id) as teamA,(select team_name from teams where matches.teamB_id=teams.team_id) as teamB,time,venue,format,match_id FROM matches  where time>=current_timestamp order by time asc '; // Adjust the query based on your database schema
 
   connection.query(query, (error, results) => {
@@ -45,6 +46,7 @@ app.get('/user/matches', (req, res) => {
   });
 });
 app.post('/register', (req, res) => {
+  console.log("registering new user...);
   console.log(req.body)
   const { fullname, mobile, email, password, username } = req.body;
   const encryptedpassword = bcrypt.hashSync(password, 6);
@@ -324,7 +326,7 @@ app.get('/user/:user_id', (req, res) => {
 })
 
 app.get('/user/matches/players/:match_id', (req, res) => {
-
+  console.log("fetching players.....");
   const matchId = req.params.match_id;
 
   console.log('match_id :'+matchId)
