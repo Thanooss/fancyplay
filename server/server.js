@@ -489,7 +489,7 @@ app.post('/login', (req, res) => {
       res.status(500).json({ message: 'internal server error' })
     }
     if(results.length==0){
-      res.status(404).json({message:'error while fetching user details'})
+      res.status(404).json({message:'user not found!'})
     }
     else {
       //console.log('OK') #drycoding
@@ -508,13 +508,13 @@ app.post('/login', (req, res) => {
 
         }
         else {
-          res.status(401).json({ message: 'invalid credentials' })
+          res.status(401).json({ message: 'incorrect password!' })
 
 
         }
       }
       else {
-        res.status(404).json({ message: 'user notfound' })
+        res.status(404).json({ message: 'error while fetching user details!' })
         const session = req.sessionID;
         console.log("on invalid username" + session)
 
