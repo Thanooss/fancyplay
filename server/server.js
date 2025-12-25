@@ -504,7 +504,7 @@ app.post('/login', (req, res) => {
 
           res.status(200).json(results[0]);
           // const query='select user_id from users where username=`${username}`';
-          console.log("login successful",results[0].username)
+          console.log("login successful",results[0])
 
         }
         else {
